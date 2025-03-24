@@ -10,6 +10,6 @@ export const testDataSourceOptions: DataSourceOptions = {
   database: 'd3_db_test',
   entities: dataSourceOptions.entities,
   migrations: dataSourceOptions.migrations,
-  synchronize: true, // Em testes podemos sincronizar automaticamente
+  synchronize: false, // Em testes podemos sincronizar automaticamente
   dropSchema: true, // Limpa o banco antes de cada teste
 };

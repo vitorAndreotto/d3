@@ -1,13 +1,23 @@
-FROM node:20-alpine
+# Build stage
+FROM node:20
 
+# Define o diretório de trabalho
 WORKDIR /usr/src/app
 
+# Copiar apenas arquivos necessários para instalação de dependências
 COPY package*.json ./
 
-RUN npm install
+# Instalar dependências com cache eficiente
+RUN npm ci
 
+# Copiar o restante do código
 COPY . .
 
-EXPOSE 3000
+# Definir variáveis de ambiente
+ENV NODE_ENV=development
 
-CMD ["npm", "run", "dev"]
+# Expor a porta da aplicação
+EXPOSE 3333
+
+# Comando para rodar o app
+CMD npm run dev

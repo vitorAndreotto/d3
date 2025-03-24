@@ -24,12 +24,17 @@ services:
   api:
     build:
       context: ./api
+      dockerfile: Dockerfile
     container_name: d3_api
     ports:
-      - "3000:3000"
+      - "3333:3333"
     volumes:
       - ./api:/usr/src/app
       - /usr/src/app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=100
+      - NODE_ENV=development
     env_file:
       - ./api/.env.development
     depends_on:
