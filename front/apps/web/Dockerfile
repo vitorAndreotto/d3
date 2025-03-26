@@ -21,9 +21,16 @@ ENV HOSTNAME=0.0.0.0
 # Expondo a porta do web
 EXPOSE 3002
 
-# Script de inicialização
-COPY ./apps/web/docker-dev.sh /docker-dev.sh
-RUN chmod +x /docker-dev.sh
-
 # Comando para desenvolvimento com hot reloading
-CMD ["/docker-dev.sh"]
+CMD cd /app && \
+    echo "Instalando dependências do projeto..." && \
+    npm install && \
+    echo "Instalando dependências do web app..." && \
+    cd /app/apps/web && \
+    npm install && \
+    cd /app && \
+    echo "Compilando pacotes compartilhados..." && \
+    npx turbo run build --filter=@front/ui --filter=@repo/assets && \
+    echo "Iniciando o servidor de desenvolvimento..." && \
+    cd /app/apps/web && \
+    npm run dev

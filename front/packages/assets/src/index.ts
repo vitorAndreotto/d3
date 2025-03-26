@@ -1,3 +1,5 @@
-// Export all assets
+// Images
 export * from './images';
+
+// Videos
 export * from './videos';

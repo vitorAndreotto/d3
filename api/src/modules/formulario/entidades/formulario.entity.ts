@@ -48,14 +48,8 @@ export class Formulario {
   @Column({ length: 7, name: 'cor_texto', default: '#FFFFFF' })
   corTexto: string;
 
-  @Column({ default: false })
-  web: boolean;
-
-  @Column({ default: false })
-  mobile: boolean;
-
-  @Column({ default: false })
-  desktop: boolean;
+  @Column({ length: 255, name: 'tipo', select: true})
+  tipo: string;  
 
   @CreateDateColumn({ name: 'criado_em', select: false })
   criadoEm: Date;

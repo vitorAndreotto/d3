@@ -71,9 +71,7 @@ export class FormularioService {
         corFundo: true,
         corPrincipal: true,
         corTexto: true,
-        web: true,
-        mobile: true,
-        desktop: true,
+        tipo: true,
       },
     });
   }
@@ -100,9 +98,6 @@ export class FormularioService {
         corFundo: true,
         corPrincipal: true,
         corTexto: true,
-        web: true,
-        mobile: true,
-        desktop: true,
         criadoPor: {
           id: true,
           nome: true,
@@ -124,80 +119,13 @@ export class FormularioService {
    * @param {string} rota - Rota do formulário.
    * @returns {Promise<Formulario>} Retorna os dados do formulário.
    */
-  async findOneByRotaAndWeb(rota: string) {
+  async findOneByRota(rota: string) {
     const formulario = await this.formularioRepository.findOne({
-      where: { rota, web: true },
-      select: {
-        id: true,
-        nome: true,
-        rota: true,
-        titulo: true,
-        descricao: true,
-        tituloFinal: true,
-        descricaoFinal: true,
-        imagemFundo: true,
-        corFundo: true,
-        corPrincipal: true,
-        corTexto: true,
-      },
+      where: { rota },
     });
 
     return formulario;
   }
-
-    /**
-   * Retorna um formulário específico do sistema.
-   * 
-   * @param {string} rota - Rota do formulário.
-   * @returns {Promise<Formulario>} Retorna os dados do formulário.
-   */
-  async findOneByRotaAndMobile(rota: string) {
-    const formulario = await this.formularioRepository.findOne({
-      where: { rota, mobile: true },
-      select: {
-        id: true,
-        nome: true,
-          rota: true,
-          titulo: true,
-          descricao: true,
-          tituloFinal: true,
-          descricaoFinal: true,
-          imagemFundo: true,
-          corFundo: true,
-          corPrincipal: true,
-          corTexto: true,
-        },
-      });
-  
-      return formulario;
-    }
-
-        /**
-   * Retorna um formulário específico do sistema.
-   * 
-   * @param {string} rota - Rota do formulário.
-   * @returns {Promise<Formulario>} Retorna os dados do formulário.
-   */
-  async findOneByRotaAndDesktop(rota: string) {
-    const formulario = await this.formularioRepository.findOne({
-      where: { rota, desktop: true },
-      select: {
-        id: true,
-        nome: true,
-          rota: true,
-          titulo: true,
-          descricao: true,
-          tituloFinal: true,
-          descricaoFinal: true,
-          imagemFundo: true,
-          corFundo: true,
-          corPrincipal: true,
-          corTexto: true,
-        },
-      });
-  
-      return formulario;
-    }
 
   /**
    * Atualiza um formulário no sistema.

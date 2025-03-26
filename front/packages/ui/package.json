@@ -9,8 +9,9 @@
         "dist/**"
     ],
     "scripts": {
-        "build": "tsc",
-        "dev": "tsc --watch"
+        "build": "tsc && node scripts/copy-assets.js",
+        "dev": "tsc --watch",
+        "copy-assets": "node scripts/copy-assets.js"
     },
     "peerDependencies": {
         "react": "^18.2.0"

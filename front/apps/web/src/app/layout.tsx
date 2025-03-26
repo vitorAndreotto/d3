@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inconsolata, Montserrat } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
-import d3Logo from "@repo/assets/src/images/logos/d3-logo.svg";
 
 const inconsolata = Inconsolata({
   subsets: ["latin"],
@@ -28,14 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inconsolata.variable} ${montserrat.variable} font-inconsolata`}>
+      <body
+        className={`${inconsolata.variable} ${montserrat.variable} font-inconsolata`}
+      >
         <div className="min-h-screen flex flex-col">
           {/* Header */}
           <header className="bg-black">
             <div className="max-w-7xl mx-auto py-[24px] px-4 sm:px-6 lg:px-8">
               <div className="flex justify-center h-[24px] w-auto">
-                <Image 
-                  src={d3Logo}
+                <Image
+                  src="/assets/images/logos/d3-logo.svg"
                   alt="D3.Works"
                   width={161}
                   height={24}
@@ -47,15 +48,14 @@ export default function RootLayout({
           </header>
 
           {/* Main content */}
-          <main className="flex-grow">
-            {children}
-          </main>
+          <main className="flex-grow">{children}</main>
 
           {/* Footer */}
           <footer className="bg-[#141414]">
             <div className="max-w-7xl mx-auto py-[18px] px-4 sm:px-6 lg:px-8">
               <p className="text-center text-white text-[16px] leading-[20px]">
-                Todos os direitos reservados. D3 Soluções Especializadas em Tecnologia da Informação LTDA.
+                Todos os direitos reservados. D3 Soluções Especializadas em
+                Tecnologia da Informação LTDA.
               </p>
             </div>
           </footer>

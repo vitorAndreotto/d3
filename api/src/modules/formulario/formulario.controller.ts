@@ -37,18 +37,9 @@ export class FormularioController {
     return this.formularioService.findOne(id);
   }
 
-  @Get('rota/:device/:rota')
-  findOneByRota(@Param('rota') rota: string, @Param('device') device: string) {
-    switch (device) {
-      case 'web':
-        return this.formularioService.findOneByRotaAndWeb(rota);
-      case 'mobile':
-        return this.formularioService.findOneByRotaAndMobile(rota);
-      case 'desktop':
-        return this.formularioService.findOneByRotaAndDesktop(rota);
-      default:
-        throw new NotFoundException('Device inválido');
-    }
+  @Get('rota/:rota')
+  findOneByRota(@Param('rota') rota: string) {
+    return this.formularioService.findOneByRota(rota);
   }
 
   @Get('etapas/:id')

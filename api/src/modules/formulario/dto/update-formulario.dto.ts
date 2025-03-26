@@ -25,6 +25,10 @@ export class UpdateFormularioDto {
   @Length(1, 255, {message: "Descrição final precisa ter entre 1 e 255 caracteres"})
   descricaoFinal: string;
 
+  @IsString({message: "Tipo precisa ser uma string"})
+  @Length(1, 255, {message: "Tipo precisa ter entre 1 e 255 caracteres"})
+  tipo?: string;
+
   @IsString({message: "Imagem de fundo precisa ser uma string"})
   @Length(1, 255, {message: "Imagem de fundo precisa ter entre 1 e 255 caracteres"})
   @IsOptional()
@@ -44,16 +48,4 @@ export class UpdateFormularioDto {
   @Length(1, 7, {message: "Cor de texto precisa ter entre 1 e 7 caracteres"})
   @IsOptional()
   corTexto?: string;
-
-  @IsBoolean({message: "Web precisa ser um boolean"})
-  @IsOptional()
-  web?: boolean;
-
-  @IsBoolean({message: "Mobile precisa ser um boolean"})
-  @IsOptional()
-  mobile?: boolean;
-
-  @IsBoolean({message: "Desktop precisa ser um boolean"})
-  @IsOptional()
-  desktop?: boolean;
 }

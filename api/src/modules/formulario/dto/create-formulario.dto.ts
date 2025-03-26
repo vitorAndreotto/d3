@@ -25,6 +25,10 @@ export class CreateFormularioDto {
   @Length(1, 255, {message: "Descrição final precisa ter entre 1 e 255 caracteres"})
   descricaoFinal: string;
 
+  @IsString({message: "Tipo precisa ser uma string"})
+  @Length(1, 255, {message: "Tipo precisa ter entre 1 e 255 caracteres"})
+  tipo?: string;
+
   @IsString({message: "Imagem de fundo precisa ser uma string"})
   @Length(1, 255, {message: "Imagem de fundo precisa ter entre 1 e 255 caracteres"})
   @IsOptional()
