@@ -21,8 +21,8 @@ async function bootstrap() {
   // Prefixo global para todas as rotas
   app.setGlobalPrefix('api');
   
-  await app.listen(3333);
-  logger.log(`Application is running on: http://localhost:3333`);
+  await app.listen(3000);
+  logger.log(`Application is running on: http://localhost:3000`);
 }
 
 bootstrap();

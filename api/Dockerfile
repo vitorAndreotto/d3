@@ -17,7 +17,7 @@ COPY . .
 ENV NODE_ENV=development
 
 # Expor a porta da aplicação
-EXPOSE 3333
+EXPOSE 3000
 
 # Comando para rodar o app
 CMD npm run dev

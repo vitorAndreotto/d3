@@ -1,0 +1,19 @@
+{
+    "name": "desktop",
+    "version": "1.0.0",
+    "main": "dist/main.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development concurrently \"turbo run dev --filter=web\" \"tsc -w\" \"wait-on http://localhost:3000 && electron .\"",
+        "build": "turbo run build --filter=web && tsc -p tsconfig.json",
+        "start": "cross-env NODE_ENV=production electron ."
+    },
+    "dependencies": {
+        "electron": "^26.0.0"
+    },
+    "devDependencies": {
+        "concurrently": "^7.0.0",
+        "cross-env": "^7.0.0",
+        "typescript": "^5.0.0",
+        "wait-on": "^6.0.0"
+    }
+}

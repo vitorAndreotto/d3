@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@front/ui": ["./packages/ui/src"],
+      "@front/api": ["./packages/api/src"],
+      "@repo/assets": ["./packages/assets/src"]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "expo start --dev-client",
+    "build": "expo export",
+    "start": "expo start --no-dev --minify",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "dependencies": {
+    "expo": "~49.0.0",
+    "expo-router": "^2.0.0",
+    "react": "18.2.0",
+    "react-native": "0.72.10",
+    "expo-dev-client": "~2.4.13",
+    "expo-splash-screen": "~0.20.5",
+    "expo-status-bar": "~1.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  }
+}

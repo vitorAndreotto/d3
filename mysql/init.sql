@@ -66,8 +66,6 @@ CREATE TABLE `formulario` (
   CONSTRAINT `fk_form_deletado_por` FOREIGN KEY (`deletado_por`) REFERENCES `usuario` (`id`) ON DELETE SET NULL
 );
 
-CREATE INDEX idx_formulario_rota ON formulario (rota, deletado_em, web, mobile, desktop);
-
 -- Criação da tabela de pergunta
 CREATE TABLE IF NOT EXISTS pergunta (
     id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
