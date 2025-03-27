@@ -13,6 +13,7 @@ import { Formulario } from '../../formulario/entidades/formulario.entity';
 
 @Entity('envio')
 export class Envio {
+  @Column({ select: true })  
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -52,12 +53,12 @@ export class Envio {
   @Column({ length: 255, nullable: true })
   email: string;
 
-  @Column({ name: 'resultado_acerto', type: 'decimal', precision: 5, scale: 2 })
-  resultadoAcerto: number;
+  @Column({ name: 'resultado_acerto', nullable: true, type: 'decimal', precision: 5, scale: 2 })
+  resultadoAcerto?: number;
 
-  @Column({ name: 'resultado_vazio', type: 'decimal', precision: 5, scale: 2 })
-  resultadoVazio: number;
+  @Column({ name: 'resultado_vazio', nullable: true, type: 'decimal', precision: 5, scale: 2 })
+  resultadoVazio?: number;
 
-  @Column({ name: 'resultado_erros', type: 'decimal', precision: 5, scale: 2 })
-  resultadoErros: number;
+  @Column({ name: 'resultado_erros', nullable: true, type: 'decimal', precision: 5, scale: 2 })
+  resultadoErros?: number;
 }

@@ -14,3 +14,8 @@ export const listForms = async (): Promise<UIForm[]> => {
     id: form.id.toString()
   }));
 };
+
+export async function getFormById(id: string): Promise<Form> {
+  const response = await api.get<Form>('api/formulario', { params: { id } });
+  return response.data;
+}

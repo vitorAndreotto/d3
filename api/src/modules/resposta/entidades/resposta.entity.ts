@@ -11,16 +11,16 @@ import {
 import { Usuario } from '../../usuario/entidades/usuario.entity';
 import { Envio } from '../../envio/entidades/envio.entity';
 import { Pergunta } from '../../pergunta/entidades/pergunta.entity';
-import { Formulario } from '../../formulario/entidades/formulario.entity';
 
 export enum StatusResposta {
   ACERTO = 'acerto',
   ERRO = 'erro',
-  VAZIO = 'vazio'
+  VAZIO = 'vazio',
 }
 
 @Entity('resposta')
 export class Resposta {
+  @Column({ select: true })
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -60,10 +60,6 @@ export class Resposta {
   @ManyToOne(() => Pergunta, { nullable: false })
   @JoinColumn({ name: 'pergunta_id' })
   pergunta: Pergunta;
-
-  @ManyToOne(() => Formulario, formulario => formulario.respostas)
-  @JoinColumn({ name: 'formulario_id' })
-  formulario: Formulario;
 
   @Column({ type: 'mediumtext', nullable: true })
   valor: string;

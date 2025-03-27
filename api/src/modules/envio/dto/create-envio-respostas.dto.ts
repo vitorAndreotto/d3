@@ -1,5 +1,5 @@
-import { CreateRespostaDto } from '../../resposta/dto/create-resposta.dto';
-import { IsString, IsEmail, IsOptional, IsNumber, IsArray } from 'class-validator';
+import { CreateRespostaSimplesDto } from '../../resposta/dto/create-resposta-simples.dto';
+import { IsString, IsEmail, IsOptional, IsArray } from 'class-validator';
 import { CreateEnvioDto } from './create-envio.dto';
 
 export class CreateEnvioWithRespostasDto extends CreateEnvioDto {
@@ -8,21 +8,12 @@ export class CreateEnvioWithRespostasDto extends CreateEnvioDto {
 
   @IsString()
   @IsOptional()
-  nome?: string;
+  nome: string;
 
   @IsEmail()
   @IsOptional()
-  email?: string;
-
-  @IsNumber()
-  resultadoAcerto: number;
-
-  @IsNumber()
-  resultadoVazio: number;
-
-  @IsNumber()
-  resultadoErros: number;
+  email: string;
 
   @IsArray()
-  respostas: CreateRespostaDto[];
+  respostas: CreateRespostaSimplesDto[];
 }

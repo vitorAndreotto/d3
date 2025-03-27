@@ -11,13 +11,4 @@ export class CreateEnvioDto {
   @IsEmail()
   @IsOptional()
   email?: string;
-
-  @IsNumber()
-  resultadoAcerto: number;
-
-  @IsNumber()
-  resultadoVazio: number;
-
-  @IsNumber()
-  resultadoErros: number;
 }

@@ -42,9 +42,10 @@ export class FormularioController {
     return this.formularioService.findOneByRota(rota);
   }
 
-  @Get('etapas/:id')
-  async findAllEtapas(@Param('id') id: string) {
-    const perguntas =  await this.perguntaService.findAllPerguntasByFormularioId(id);
+  @Get('etapas/:rota')
+  async findAllEtapas(@Param('rota') rota: string) {
+    const formulario = await this.formularioService.findOneByRota(rota);
+    const perguntas = await this.perguntaService.findAllPerguntasByFormularioIdOrRota(formulario.id);
 
     if (!perguntas) {
       throw new NotFoundException('Perguntas não encontradas');
@@ -63,7 +64,7 @@ export class FormularioController {
       etapa.perguntas.push(p);
     });
 
-    return etapas;
+    return { ...formulario, etapas };
   }
 
   //TODO: Implementar limpeza do objeto retornado para remover informações de auditoria interna

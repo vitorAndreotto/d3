@@ -19,6 +19,7 @@ export class RespostaService {
   ) {}
 
   async create(createRespostaDto: CreateRespostaDto) {
+    console.log("createRespostaDto", createRespostaDto);
     const envio = await this.envioRepository.findOne({
       where: { id: createRespostaDto.envioId },
     });
@@ -35,11 +36,7 @@ export class RespostaService {
       throw new NotFoundException('Pergunta não encontrada');
     }
 
-    const resposta = this.respostaRepository.create({
-      ...createRespostaDto,
-      envio,
-      pergunta,
-    });
+    const resposta = this.respostaRepository.create(createRespostaDto);
 
     return this.respostaRepository.save(resposta);
   }
@@ -48,6 +45,8 @@ export class RespostaService {
     const envio = await this.envioRepository.findOne({
       where: { id: respostas[0].envioId },
     });
+
+    console.log("respostas", respostas);
 
     if (!envio) {
       throw new NotFoundException('Envio não encontrado');

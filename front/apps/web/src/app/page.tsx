@@ -26,10 +26,6 @@ export default function Home() {
     }
   };
 
-  const handleFormAccess = (formId: string) => {
-    alert(`Acessar formulário ${formId}`);
-  };
-
   return (
     <main className="flex flex-col lg:flex-row min-h-[calc(100vh-128px)] bg-[#000000] relative">
       {/* Container do vídeo */}
@@ -45,7 +41,7 @@ export default function Home() {
         <div
           className="
       absolute inset-0 
-      flex items-end lg:items-end justify-center lg:justify-end
+      flex items-end lg:items-center justify-center lg:justify-end
       h-full
     "
         >
@@ -81,7 +77,6 @@ export default function Home() {
             forms={forms}
             loading={loading}
             error={error}
-            onFormAccess={handleFormAccess}
           />
         </div>
       </div>

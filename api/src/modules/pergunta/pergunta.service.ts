@@ -130,9 +130,11 @@ export class PerguntaService {
    * @param {string} formularioId - ID do formulário.
    * @returns {Promise<Pergunta[]>} Retorna uma lista de todas as perguntas do formulário.
    */
-  async findAllPerguntasByFormularioId(formularioId: string) {
+  async findAllPerguntasByFormularioIdOrRota(formularioId: string) {
     return this.perguntaRepository.find({
-      where: { formularioId },
+      where: [
+        { formularioId },
+      ],
       select: {
         id: true,
         etapa: true,
@@ -144,6 +146,13 @@ export class PerguntaService {
       order: {
         etapa: 'ASC',
       },
+    });
+  }
+
+  async findByFormularioId(formularioId: string) {
+    return this.perguntaRepository.find({
+      where: { formularioId },
+      select: ['id', 'gabarito'], // Otimizando para trazer só os campos necessários
     });
   }
 

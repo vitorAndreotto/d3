@@ -10,7 +10,6 @@ import {
   JoinColumn
 } from 'typeorm';
 import { Usuario } from '../../usuario/entidades/usuario.entity';
-import { Resposta } from '../../resposta/entidades/resposta.entity';
 import { Pergunta } from '../../pergunta/entidades/pergunta.entity';
 
 @Entity('formulario')
@@ -80,9 +79,6 @@ export class Formulario {
   @ManyToOne(() => Usuario, { nullable: true })
   @JoinColumn({ name: 'deletado_por' })
   deletadoPor: Usuario;
-
-  @OneToMany(() => Resposta, resposta => resposta.formulario)
-  respostas: Resposta[];
 
   @OneToMany(() => Pergunta, (pergunta) => pergunta.formulario)
   perguntas: Pergunta[];
