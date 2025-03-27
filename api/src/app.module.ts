@@ -1,5 +1,5 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,6 +10,8 @@ import { PerguntaModule } from './modules/pergunta/pergunta.module';
 import { EnvioModule } from './modules/envio/envio.module';
 import { RespostaModule } from './modules/resposta/resposta.module';
 import { RequestLoggerMiddleware } from './middleware/request-logger.middleware';
+import { SqlInjectionMiddleware } from './middleware/sql-injection.middleware';
+import { typeOrmConfig } from './config/typeorm.config';
 
 @Module({
   imports: [
@@ -17,19 +19,10 @@ import { RequestLoggerMiddleware } from './middleware/request-logger.middleware'
       envFilePath: '.env.development',
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT || '3306'),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false,
-      autoLoadEntities: false,
-      logging: true,
-      logger: 'advanced-console',
-      migrationsRun: false
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: typeOrmConfig,
+      inject: [ConfigService],
     }),
     UsuarioModule,
     AuthModule,
@@ -43,6 +36,11 @@ import { RequestLoggerMiddleware } from './middleware/request-logger.middleware'
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(RequestLoggerMiddleware).forRoutes('*');
+    consumer
+      .apply(RequestLoggerMiddleware)
+      .forRoutes('*');
+    consumer
+      .apply(SqlInjectionMiddleware)
+      .forRoutes('*');
   }
 }
