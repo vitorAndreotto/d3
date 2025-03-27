@@ -50,7 +50,7 @@ docker-compose up -d
 ```
 
 Isso irá iniciar:
-- Frontend na porta 80
+- Frontend na porta 3001
 - API NestJS na porta 3000
 - MySQL na porta 3306
 
