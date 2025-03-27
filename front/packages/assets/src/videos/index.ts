@@ -1,1 +1,0 @@
-export const esfera = "/assets/videos/backgrounds/esfera.mp4";

@@ -1,7 +1,0 @@
-{
-  "name": "mobile",
-  "slug": "mobile",
-  "android": {
-    "package": "d3Formularios.mobile"
-  }
-}
