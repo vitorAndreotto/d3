@@ -58,7 +58,6 @@ Isso irá iniciar:
 
 - Frontend: `http://localhost:3001`
 - API: `http://localhost:3000`
-- Swagger (Documentação API): `http://localhost:3000/api-docs`
 
 ### Credenciais do Banco de Dados
 
