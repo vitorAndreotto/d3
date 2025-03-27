@@ -56,7 +56,7 @@ Isso irá iniciar:
 
 ### URLs do Projeto
 
-- Frontend: `http://localhost`
+- Frontend: `http://localhost:3001`
 - API: `http://localhost:3000`
 - Swagger (Documentação API): `http://localhost:3000/api-docs`
 
