@@ -48,16 +48,4 @@ export class CreateFormularioDto {
   @Length(1, 7, {message: "Cor de texto precisa ter entre 1 e 7 caracteres"})
   @IsOptional()
   corTexto?: string;
-
-  @IsBoolean({message: "Web precisa ser um boolean"})
-  @IsOptional()
-  web?: boolean;
-
-  @IsBoolean({message: "Mobile precisa ser um boolean"})
-  @IsOptional()
-  mobile?: boolean;
-
-  @IsBoolean({message: "Desktop precisa ser um boolean"})
-  @IsOptional()
-  desktop?: boolean;
 }

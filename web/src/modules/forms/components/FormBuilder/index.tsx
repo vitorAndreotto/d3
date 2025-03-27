@@ -6,6 +6,7 @@ import { QuestionScreen } from './components/question-screen';
 import { UserInfoScreen } from './components/user-info-screen';
 import { SuccessScreen } from './components/success-screen';
 import { useFormState } from '../../hooks/useFormState';
+import { Spinner } from '@/shared/components/Spinner';
 
 interface FormBuilderProps {
   rota: string;
@@ -32,11 +33,7 @@ export const FormBuilder = ({ rota }: FormBuilderProps) => {
   }, [rota]);
 
   if (loading) {
-    return (
-      <div className="w-full h-screen flex items-center justify-center">
-        <p className="text-white">Carregando...</p>
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (error || !form) {
@@ -103,6 +100,7 @@ const FormContent = ({ form }: { form: Form }) => {
         formData={state.formData}
         onInputChange={handleInputChange}
         onNext={handleNext}
+        isSubmitting={submitting}
       />
     );
   };
@@ -131,11 +129,11 @@ const FormContent = ({ form }: { form: Form }) => {
             playsInline
             className="
               w-auto h-[200%]
-              absolute top-0 left-1/2
+              absolute top-0 left-[56%]
               -translate-x-1/2 -translate-y-1/2
-              lg:relative lg:h-full lg:top-auto lg:left-auto
+              lg:relative lg:h-full lg:top-auto lg:right-0 lg:left-auto
               lg:translate-x-0 lg:translate-y-0
-              object-cover
+              object-cover lg:object-right
             "
             src="/assets/videos/backgrounds/esfera.mp4"
           />

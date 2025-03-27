@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { FormularioController } from '../formulario.controller';
 import { FormularioService } from '../formulario.service';
 import { Usuario } from '../../usuario/entidades/usuario.entity';
+import { CreateFormularioDto } from '../dto/create-formulario.dto';
+import { PerguntaService } from '../../pergunta/pergunta.service';
 
 describe('FormularioController', () => {
   let controller: FormularioController;
@@ -13,7 +15,14 @@ describe('FormularioController', () => {
     remove: jest.fn(),
   };
 
-  const mockUser: Partial<Usuario> = {
+  const mockPerguntaService = {
+    create: jest.fn(),
+    findAll: jest.fn(),
+    findOne: jest.fn(),
+    remove: jest.fn(),
+  };
+
+  const mockUser: Usuario = {
     id: '1',
     nome: 'Test User',
     login: 'testuser',
@@ -41,6 +50,10 @@ describe('FormularioController', () => {
           provide: FormularioService,
           useValue: mockFormularioService,
         },
+        {
+          provide: PerguntaService,
+          useValue: mockPerguntaService,
+        },
       ],
     }).compile();
 
@@ -53,16 +66,18 @@ describe('FormularioController', () => {
 
   describe('create', () => {
     it('should create a new form', async () => {
-      const createFormularioDto = {
+      const createFormularioDto: CreateFormularioDto = {
         nome: 'Test Form',
         rota: 'test-form',
         titulo: 'Test Title',
         descricao: 'Test Description',
         tituloFinal: 'Test Final Title',
         descricaoFinal: 'Test Final Description',
-        web: true,
-        mobile: false,
-        desktop: false
+        corPrincipal: '#FFFF00',
+        corTexto: '#FFFFFF',
+        tipo: 'padrao',
+        imagemFundo: 'background.jpg',
+        corFundo: '#000000'
       };
 
       const expectedResult = {
@@ -89,6 +104,16 @@ describe('FormularioController', () => {
         {
           id: '1',
           nome: 'Test Form',
+          rota: 'test-form',
+          titulo: 'Test Title',
+          descricao: 'Test Description',
+          tituloFinal: 'Test Final Title',
+          descricaoFinal: 'Test Final Description',
+          corPrincipal: '#FFFF00',
+          corTexto: '#FFFFFF',
+          tipo: 'padrao',
+          imagemFundo: 'background.jpg',
+          corFundo: '#000000'
         },
       ];
 
@@ -102,15 +127,24 @@ describe('FormularioController', () => {
 
   describe('findOne', () => {
     it('should return a form', async () => {
-      const formId = '1';
       const expectedResult = {
-        id: formId,
+        id: '1',
         nome: 'Test Form',
+        rota: 'test-form',
+        titulo: 'Test Title',
+        descricao: 'Test Description',
+        tituloFinal: 'Test Final Title',
+        descricaoFinal: 'Test Final Description',
+        corPrincipal: '#FFFF00',
+        corTexto: '#FFFFFF',
+        tipo: 'padrao',
+        imagemFundo: 'background.jpg',
+        corFundo: '#000000'
       };
 
       mockFormularioService.findOne.mockResolvedValue(expectedResult);
 
-      const result = await controller.findOne(formId);
+      const result = await controller.findOne('1');
 
       expect(result).toEqual(expectedResult);
     });
@@ -118,15 +152,14 @@ describe('FormularioController', () => {
 
   describe('remove', () => {
     it('should remove a form', async () => {
-      const formId = '1';
-      const expectedResult = { id: formId };
+      const expectedResult = { id: '1' };
 
       mockFormularioService.remove.mockResolvedValue(expectedResult);
 
-      const result = await controller.remove(formId, mockRequest);
+      const result = await controller.remove('1', mockRequest);
 
       expect(result).toEqual(expectedResult);
-      expect(mockFormularioService.remove).toHaveBeenCalledWith(formId, mockUser);
+      expect(mockFormularioService.remove).toHaveBeenCalledWith('1', mockUser);
     });
   });
 });

@@ -47,32 +47,24 @@ services:
 
   web:
     build:
-      context: ./front
-      dockerfile: ./apps/web/Dockerfile
+      context: ./web
+      dockerfile: Dockerfile
     container_name: d3_web
     ports:
-      - "3002:3002"
+      - "3001:3001"
     volumes:
-      - ./front:/app
+      - ./web:/app
       - /app/node_modules
-      - /app/apps/web/node_modules
-      - /app/packages/ui/node_modules
-      - /app/packages/assets/node_modules
-      - turbo-cache:/app/.turbo
       - /app/.next
-      - /app/apps/web/.next
     environment:
       - NODE_ENV=development
       - API_URL=http://api:3000
-      - PORT=3002
+      - PORT=3001
       - HOSTNAME=0.0.0.0
       - NEXT_TELEMETRY_DISABLED=1
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
       - CHOKIDAR_INTERVAL=100
-      - FORCE_COLOR=1
-    tty: true
-    stdin_open: true
     depends_on:
       - api
     networks:
@@ -84,4 +76,3 @@ networks:
 
 volumes:
   mysql-data:
-  turbo-cache:

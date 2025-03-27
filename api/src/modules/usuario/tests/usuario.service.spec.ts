@@ -59,7 +59,10 @@ describe('UsuarioService', () => {
         nome: createDto.nome,
         login: createDto.login,
       });
-      expect(mockRepository.findOne).toHaveBeenCalledWith({ where: { login: createDto.login } });
+      expect(mockRepository.findOne).toHaveBeenCalledWith({
+        where: { login: createDto.login },
+        withDeleted: true
+      });
       expect(bcrypt.hash).toHaveBeenCalledWith(createDto.senha, 10);
     });
 

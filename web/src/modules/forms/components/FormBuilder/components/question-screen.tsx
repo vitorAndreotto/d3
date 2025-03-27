@@ -6,6 +6,7 @@ import { RadioGroup } from "@/shared/components/RadioGroup";
 import { TextArea } from "@/shared/components/TextArea";
 import { StepIndicator } from "@/shared/components/StepIndicator";
 import { TextWithColor } from "@/shared/components/TextWithColor";
+import { Spinner } from "@/shared/components/Spinner";
 
 interface QuestionScreenProps {
   form: Form;
@@ -13,6 +14,7 @@ interface QuestionScreenProps {
   formData: Record<string, any>;
   onInputChange: (id: string, value: any) => void;
   onNext: () => void;
+  isSubmitting?: boolean;
 }
 
 export const QuestionScreen = ({
@@ -21,10 +23,13 @@ export const QuestionScreen = ({
   formData,
   onInputChange,
   onNext,
+  isSubmitting = false,
 }: QuestionScreenProps) => {
   console.log("form", form);
   return (
     <>
+      {isSubmitting && <Spinner />}
+      
       <StepIndicator
         currentStep={currentEtapa}
         totalSteps={form.etapas.length}
@@ -95,7 +100,7 @@ export const QuestionScreen = ({
           ))}
         </div>
 
-        <div className="flex justify-between pt-6">
+        <div className="flex justify-between mt-[62px]">
           <Button onClick={onNext} corPrincipal={form.corPrincipal}>
             {currentEtapa === form.etapas.length ? "Finalizar" : "Próximo"}
           </Button>
