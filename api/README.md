@@ -71,3 +71,87 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+# API NestJS
+
+Backend da aplicação desenvolvido com NestJS, TypeScript e MySQL.
+
+## Estrutura de Diretórios
+
+```
+.
+├── src/                      # Código fonte
+│   ├── config/              # Configurações (TypeORM, etc)
+│   ├── middleware/          # Middlewares da aplicação
+│   ├── modules/             # Módulos da aplicação
+│   │   ├── auth/           # Autenticação e autorização
+│   │   ├── envio/          # Módulo de envio de dados
+│   │   └── formulario/     # Módulo de formulários
+│   └── main.ts             # Ponto de entrada da aplicação
+├── test/                    # Testes automatizados
+├── dist/                    # Código compilado
+├── .env.development         # Variáveis de ambiente - desenvolvimento
+├── .env.example            # Exemplo de variáveis de ambiente
+├── Dockerfile              # Configuração do container
+├── nest-cli.json          # Configuração do NestJS
+├── package.json           # Dependências e scripts
+└── tsconfig.json         # Configuração do TypeScript
+```
+
+## Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+npm run start:dev     # Inicia em modo desenvolvimento
+npm run start:debug   # Inicia em modo debug
+npm run start:prod    # Inicia em modo produção
+
+# Build
+npm run build        # Compila o projeto
+npm run format       # Formata o código
+npm run lint         # Executa o linter
+
+# Testes
+npm run test         # Executa testes unitários
+npm run test:watch   # Executa testes em modo watch
+npm run test:cov     # Relatório de cobertura de testes
+npm run test:debug   # Depuração de testes
+npm run test:e2e     # Testes end-to-end
+```
+
+## Módulos Principais
+
+### Auth
+- Autenticação JWT
+- Proteção de rotas
+- Gerenciamento de sessão
+
+### Envio
+- Processamento de envios
+- Validação de dados
+- Armazenamento de respostas
+
+### Formulário
+- CRUD de formulários
+- Validação de campos
+- Gerenciamento de perguntas
+
+## Configuração
+
+O projeto utiliza variáveis de ambiente para configuração. Copie o arquivo `.env.example` para `.env.development` e ajuste as variáveis conforme necessário:
+
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+DB_DATABASE=nome_do_banco
+```
+
+## Docker
+
+O projeto inclui um Dockerfile para containerização. Para construir a imagem:
+
+```bash
+docker build -t d3-api .
+``` 

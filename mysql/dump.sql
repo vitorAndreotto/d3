@@ -77,7 +77,7 @@ CREATE TABLE `formulario` (
   `descricao` varchar(255) NOT NULL,
   `titulo_final` varchar(255) NOT NULL,
   `descricao_final` varchar(255) NOT NULL,
-  `tipo` enum('tecnologia','saude','educacao') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `tipo` enum('tecnologia','saude','educacao', 'financeiro', 'marketing') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `web` tinyint(1) DEFAULT '0',
   `mobile` tinyint(1) DEFAULT '0',
   `desktop` tinyint(1) DEFAULT '0',

@@ -20,17 +20,82 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+# Frontend D3.js
 
-To learn more about Next.js, take a look at the following resources:
+Frontend da aplicação desenvolvido com Next.js, TypeScript, D3.js e Tailwind CSS.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura de Diretórios
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+.
+├── src/                    # Código fonte
+│   ├── app/               # Páginas e rotas
+│   ├── components/        # Componentes reutilizáveis
+│   ├── hooks/            # Hooks personalizados
+│   ├── lib/              # Bibliotecas e utilitários
+│   ├── styles/           # Estilos globais e temas
+│   └── types/            # Definições de tipos TypeScript
+├── public/               # Arquivos estáticos
+├── .next/               # Build do Next.js
+├── Dockerfile           # Configuração do container
+├── next.config.js      # Configuração do Next.js
+├── package.json        # Dependências e scripts
+├── tailwind.config.ts  # Configuração do Tailwind
+└── tsconfig.json       # Configuração do TypeScript
+```
 
-## Deploy on Vercel
+## Scripts Disponíveis
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Desenvolvimento
+npm run dev           # Inicia servidor de desenvolvimento
+npm run build        # Gera build de produção
+npm run start        # Inicia servidor de produção
+npm run lint         # Executa o linter
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Principais Funcionalidades
+
+### Visualizações D3.js
+- Gráficos interativos
+- Dashboards dinâmicos
+- Animações suaves
+- Responsividade
+
+### Componentes
+- Layout responsivo
+- Temas customizáveis
+- Componentes reutilizáveis
+- Integração com API
+
+### Performance
+- Server-side rendering
+- Otimização de imagens
+- Code splitting
+- Cache eficiente
+
+## Estilização
+
+O projeto utiliza Tailwind CSS para estilização. Personalize os temas em:
+
+```js
+// tailwind.config.ts
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#...',
+        secondary: '#...',
+      }
+    }
+  }
+}
+```
+
+## Docker
+
+O projeto inclui um Dockerfile para containerização. Para construir a imagem:
+
+```bash
+docker build -t d3-web .
+```
